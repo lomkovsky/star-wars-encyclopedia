@@ -1,0 +1,45 @@
+.people-card {
+    max-width: 150px;
+}
+
+.parent {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: calc(10px + 5%);
+
+}
+
+.green-text {
+    font-size: 15px;
+    color: rgb(41, 130, 41) !important;
+    text-align: center !important;
+    cursor: pointer;
+    border: 1px solid green;
+    border-radius: 10px;
+}
+
+.green-text:hover {
+    font-size: 15px;
+    color: rgb(163, 238, 12) !important;
+    text-align: center !important;
+    cursor: pointer;
+    border: 2px solid green;
+    border-radius: 10px;
+}
+.sort-dropdown {
+    margin-left: 20px;
+}
+mat-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    margin: auto;
+}
+
+mat-card {
+    transition: transform .2s;
+}
+
+h2 {
+    margin-left: 20px;;
+}

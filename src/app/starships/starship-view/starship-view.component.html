@@ -1,0 +1,18 @@
+<div class="container-sm">
+    <h1>The {{starship.name}} starship</h1>
+    <form [formGroup]="statshipForm" (ngSubmit)="updateStarship()">
+        <div *ngFor="let item of starship | keyvalue"> 
+        <mat-card>
+            <mat-form-field floatLabel="always">
+                <mat-label>{{item.key}}</mat-label>
+                <input matInput placeholder={{item.value}}>
+            </mat-form-field>
+        </mat-card>
+    </div>
+        <div class="text-right">
+            <button mat-flat-button type="submit" [disabled]="!statshipForm.valid" >Update Starship</button>
+            <button mat-flat-button (click)="deleteStarship()" color="accent">Delete Starship</button>
+        </div>
+
+    </form>
+</div>

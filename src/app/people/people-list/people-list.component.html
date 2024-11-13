@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>Characters list</h2>
+    
+    <mat-form-field class="sort-dropdown">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search by name" >
+    </mat-form-field>
+    <mat-form-field class="sort-dropdown">
+        <mat-select (selectionChange)="sortPeople($event.value)" placeholder="Sort by mass">
+            <mat-option value="higherMass">Mass: High to Low</mat-option>
+            <mat-option value="lowerMass">Mass: Low to High</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="parent">
+
+        
+
+        <div *ngFor="let person of filteredPeople">
+            <mat-card class="people-card" appearance="outlined" 
+            (click)="routerById(person.url)" >
+                <mat-card-content>
+                    <mat-card-title>{{person.name}}</mat-card-title>
+                    <div *ngIf="person.gender == 'n/a'; then thenTemplate; else elseTemplate">
+                    </div>
+                    <ng-template #thenTemplate>
+                        <img mat-card-image src="assets/images/not-a-human.png">
+                    </ng-template>
+                    <ng-template #elseTemplate>
+                        <img mat-card-image src="assets/images/man.png">
+                    </ng-template>
+                    <mat-card-subtitle>Was born: {{person.birth_year }}</mat-card-subtitle>
+                    <mat-card-subtitle>Gender: {{person.gender}}</mat-card-subtitle>
+                    <mat-card-subtitle>Weight: {{person.mass}} kg</mat-card-subtitle>
+                    <mat-card-subtitle class="green-text" *ngFor="let starship of person.starships">
+                        <div [routerLink]="['/starships', getIdFromUrl(starship)]">Go to starship</div>
+                    </mat-card-subtitle>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
